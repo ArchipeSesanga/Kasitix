@@ -1,0 +1,13 @@
+namespace Domain.Entities;
+
+
+
+public interface IRepository<T> where T : class, IEntity
+{
+    Task<IEnumerable<T>> GetAllAsync();
+ 
+    Task<T?> GetByIdAsync(Guid id, bool trackChanges = false);
+    Task<T> AddAsync(T entity);
+    Task<bool> UpdateAsync(T entity);
+    Task<bool> DeleteAsync(Guid id);
+}
